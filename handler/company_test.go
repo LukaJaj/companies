@@ -52,6 +52,23 @@ func TestCompany(t *testing.T) {
 			assert.Equal(t, "\"failed to get company\"\n", rec.Body.String())
 		}
 	})
+
+	t.Run("Company Not Found", func(t *testing.T) {
+
+		req := httptest.NewRequest(http.MethodGet, "/api/company", nil)
+		req.Header.Set("Content-Type", "application/json")
+		rec := httptest.NewRecorder()
+		c := e.NewContext(req, rec)
+
+		c.SetPath("/:companyId")
+		c.SetParamNames("companyId")
+		c.SetParamValues("company_not_found")
+
+		if assert.NoError(t, getCompany(c)) {
+			assert.Equal(t, http.StatusNotFound, rec.Code)
+			assert.Equal(t, "\"company with given id not found\"\n", rec.Body.String())
+		}
+	})
 }
 
 func TestCreateCompany(t *testing.T) {

@@ -15,6 +15,10 @@ func Company(s service.Service) echo.HandlerFunc {
 		companyId := c.Param("companyId")
 
 		company, err := s.Company(companyId)
+		if errors.Is(err, model.ErrCompanyNotFound) {
+			return c.JSON(http.StatusNotFound, model.ErrCompanyNotFound.Error())
+		}
+
 		if err != nil {
 			return c.JSON(http.StatusInternalServerError, "failed to get company")
 		}

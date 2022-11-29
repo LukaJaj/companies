@@ -3,10 +3,17 @@ package service
 import (
 	"companies-crud/model"
 	"errors"
+
+	"gorm.io/gorm"
 )
 
 func (s Service) Company(companyId string) (*model.Company, error) {
 	company, err := s.store.Company(companyId)
+
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, model.ErrCompanyNotFound
+	}
+
 	if err != nil {
 		return nil, err
 	}

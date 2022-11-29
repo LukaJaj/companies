@@ -20,6 +20,8 @@ func (s Store) Company(companyId string) (*model.Company, error) {
 
 	} else if companyId == "error_company" {
 		return nil, errors.New("failed to get company")
+	} else if companyId == "company_not_found" {
+		return nil, model.ErrCompanyNotFound
 	} else if companyId == "5504c7e9-45yu-4d2f-a725-03730244dvc8" {
 		return nil, errors.New("company does not exists")
 	} else if companyId == "9004c7e9-03b6-4d2f-a725-03730244d8d7" {
