@@ -1,0 +1,8 @@
+{
+    "id": "0104c7e9-03b6-4d2f-a725-03730244d8c9",
+    "name": "Amazon",
+    "description": "retail company",
+    "amount_of_employees": 10000,
+    "registered": true,
+    "type": "corporations"
+}

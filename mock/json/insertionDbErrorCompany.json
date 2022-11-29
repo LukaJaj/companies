@@ -1,0 +1,8 @@
+{
+    "id": "9104c7e9-03b6-4d2f-a725-03730244d832",
+    "name": "facebook",
+    "description": "social media company",
+    "amount_of_employees": 5000,
+    "registered": true,
+    "type": "corporations"
+}

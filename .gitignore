@@ -1,0 +1,8 @@
+*.out
+*.exe
+*.cov
+*.html
+.html
+.vscode
+.DS_Store
+/companies-crud
